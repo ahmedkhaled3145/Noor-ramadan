@@ -1,0 +1,38 @@
+void saveAthkar () {
+    ofstream file("thikr.txt", ios::out | ios::binary);
+
+    file <<  thikrCount << endl;
+
+    for (int i = 0; i < thikrCount; i++) {
+        file <<  athkarlist[i].thikrID << endl;
+        file <<  athkarlist[i].content << endl;
+        file <<  athkarlist[i].category << endl;
+        file <<  athkarlist[i].target << endl;
+    }
+
+    file.close();
+}
+
+
+void loadAthkar () {
+    ifstream file("thikr.txt", ios::out | ios::binary);
+
+    if (!file)
+        return;
+
+    file >> thikrCount;
+    file.ignore();
+
+    for (int i = 0; i < thikrCount; i++) {
+        file >>  athkarlist[i].thikrID;
+        file.ignore();
+
+        getline(file,   athkarlist[i].content);
+        getline(file,   athkarlist[i].category);
+
+        file >> athkarlist[i].target;
+        file.ignore();
+    }
+
+    file.close();
+}
