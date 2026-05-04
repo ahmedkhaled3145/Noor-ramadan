@@ -43,3 +43,11 @@ Windows-specific encoding support for Arabic text
 🎯 Purpose
 
 This project aims to encourage consistency in worship during Ramadan by combining spirituality with simple tracking and motivational feedback, all within a lightweight console application.
+👩‍💻 Team
+Hassan Ashraf
+Ahmed Karim
+Ahmed Khaled
+Basel Mohamed
+Hamza Ahmed
+Omar Hassan
+Omar Said 
