@@ -1,0 +1,21 @@
+void saveDoaa () { 
+ofstream file("doaa.txt", ios::out | ios::binary);
+file << doaaCount << endl;
+for (int i = 0; i < doaaCount; i++) {
+file << doaalist[i].doaaID << endl;
+file << doaalist[i].content << endl; 
+file << doaalist[i].category << endl;
+}
+file.close(); 
+} 
+
+void loadDoaa () { 
+ifstream file("doaa.txt", ios::out | ios::binary); 
+if (!file) return; file >> doaaCount; file.ignore();
+for (int i = 0; i < doaaCount; i++) { file >> doaalist[i].doaaID;
+file.ignore();
+getline(file, doaalist[i].content); 
+getline(file, doaalist[i].category); 
+}
+file.close();
+}
