@@ -1,0 +1,44 @@
+
+void saveCalendar() {
+
+    ofstream file("calendar.txt", ios::out | ios::binary);
+
+    for (int i = 0; i < 30; i++) {
+
+        file << ramadan[i].day << endl;
+
+        for (int j = 0; j < 5; j++) {
+
+            file << ramadan[i].times[j] << endl;
+        }
+        file << ramadan[i].event << endl;
+        file << ramadan[i].note << endl;
+        file << "----" << endl;
+    }
+
+    file.close();
+}
+
+
+void loadCalendar() {
+
+    ifstream file("calendar.txt", ios::out | ios::binary);
+
+    if (!file)
+        return;
+
+    for (int i = 0; i < 30; i++) {
+
+        file >> ramadan[i].day;
+        file.ignore();
+        for (int j = 0; j < 5; j++) {
+            getline(file, ramadan[i].times[j]);
+        }
+        getline(file, ramadan[i].event);
+        getline(file, ramadan[i].note);
+        string separator;
+        getline(file, separator);
+    }
+
+    file.close();
+}
