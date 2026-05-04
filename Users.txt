@@ -1,0 +1,34 @@
+ void saveUserData () {
+ofstream userData;
+userData.open ("users.txt", ios::out | ios::binary); 
+for (int i = 0; i < userCount; i++) { userData << users[i].name << endl; 
+userData << users[i].userID<<endl;
+userData << users[i].password<<endl; 
+userData << users[i].hint<<endl;
+userData << users[i].tasbeehGoal<<endl;
+userData << users[i].quranGoal<<endl;
+userData << users[i].rosary<<endl;
+userData << users[i].totalPages<<endl; 
+userData << users[i].points<<endl;
+userData << users[i].nickname<<endl;
+userData << "----" << endl; } userData.close(); 
+} 
+void loadUserData() {
+ifstream userData("users.txt", ios::out | ios::binary);
+if (!userData) return; userCount = 0; 
+while (getline(userData, users[userCount].name) && userCount < 150) { userData >> users[userCount].userID; 
+userData.ignore();
+getline(userData, users[userCount].password); 
+getline(userData, users[userCount].hint);
+userData >> users[userCount].tasbeehGoal; 
+userData >> users[userCount].quranGoal;
+userData >> users[userCount].rosary;
+userData >> users[userCount].totalPages; 
+userData >> users[userCount].points; 
+userData.ignore(); getline(userData, users[userCount].nickname);
+string separator; 
+getline(userData, separator);
+userCount++;
+} 
+userData.close();
+}
