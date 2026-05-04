@@ -1,0 +1,37 @@
+
+void saveProgress() {
+    ofstream file("progress.txt");
+
+    for (int i = 0; i < userCount; i++) {
+        for (int d = 0; d < 30; d++) {
+            file << progress[i][d].quran << endl;
+            file << progress[i][d].tasbeeh << endl;
+            for (int p = 0; p < 5; p++) {
+                file << progress[i][d].prayersDone[p] << " ";
+            }
+            file << endl;
+        }
+    }
+    file.close();
+
+}
+
+
+void loadProgress() {
+    ifstream file("progress.txt");
+
+    if (!file)
+        return;
+
+    for (int i = 0; i < userCount; i++) {
+        for (int d = 0; d < 30; d++) {
+            file >> progress[i][d].quran;
+            file >> progress[i][d].tasbeeh;
+            for (int p = 0; p < 5; p++) {
+                file >> progress[i][d].prayersDone[p];
+            }
+        }
+    }
+
+    file.close();
+}
